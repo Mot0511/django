@@ -5,7 +5,7 @@ from .forms import TaskForm
 
 def index(request):
     tasks = Task.objects.order_by('-id')
-    return render(request, 'main/index.html', {'title': 'Main', 'tasks': tasks})
+    return render(request, 'hello/index.html', {'title': 'hello', 'tasks': tasks})
 
 
 def create(request):
@@ -23,4 +23,4 @@ def create(request):
         'form': form,
         'error': error
     }
-    return render(request, 'main/create.html', context)
+    return render(request, 'hello/create.html', context)
