@@ -1,19 +1,26 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .models import Task
+from .forms import TaskForm
 
-from .models import Greeting
 
-# Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
+    tasks = Task.objects.order_by('-id')
+    return render(request, 'main/index.html', {'title': 'Main', 'tasks': tasks})
 
 
-def db(request):
+def create(request):
+    error = ''
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            error = 'From is not right'
 
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    return render(request, "db.html", {"greetings": greetings})
+    form = TaskForm()
+    context = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'main/create.html', context)
