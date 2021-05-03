@@ -5,7 +5,7 @@ from .forms import TaskForm
 
 def index(request):
     tasks = Task.objects.order_by('-id')
-    return render(request, 'hello/index.html', {'title': 'hello', 'tasks': tasks})
+    return render(request, 'hello/index.html', {'title': 'Главная', 'tasks': tasks})
 
 
 def create(request):
