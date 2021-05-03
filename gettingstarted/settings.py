@@ -25,7 +25,7 @@ SECRET_KEY = 'd9%n3u0-r*=2k9cv1h+(s!^m+qm(3^9bsqk)rqxch=0_5#%tet'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['motpython.herokuapp.com']
+ALLOWED_HOSTS = ['motpython.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
